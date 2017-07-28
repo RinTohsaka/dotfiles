@@ -10,12 +10,14 @@ set shiftwidth=4
 set expandtab
 "set softtabstop=4
 set number
+set relativenumber
+set cursorline
 set noshowmatch
 set background=light
 set t_Co=256
 set synmaxcol=1000
 set showcmd
-set showmode
+set noshowmode
 set noswapfile
 set nobackup
 set ruler
@@ -42,10 +44,16 @@ Plug 'SirVer/ultisnips'
 Plug 'fatih/vim-go'
 Plug 'Shougo/neocomplcache.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'alvan/vim-closetag'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'Valloric/MatchTagAlways'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'alvan/vim-closetag'
 "Plug 'fisadev/vim-isort'
 Plug 'mattn/emmet-vim'
 Plug 'python-mode/python-mode'
+Plug 'kshenoy/vim-signature'
 " color schemes
 Plug 'jpo/vim-railscasts-theme'
 Plug 'nightsense/vim-crunchbang'
@@ -74,6 +82,15 @@ let g:syntastic_python_pylint_post_args =
 
 " delimitMate
 imap <expr> <CR> pumvisible() ? neocomplcache#close_popup() : '<Plug>delimitMateCR'
+
+" Emmet-vim
+let g:user_emmet_install_global = 0
+autocmd FileType html,htmldjango,css EmmetInstall
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme='bubblegum'
+let g:airline#extensions#tabline#enabled = 1
 
 " for the indent guides plugin
 let g:indent_guides_enable_on_vim_startup = 1
@@ -110,8 +127,8 @@ let g:NERDTreeDirArrowCollapsible = '↓'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "vim-closetag
-let delimitMate_matchpairs = "(:),[:],{:}"
-au FileType xhtml,html,htm let b:delimitMate_matchpairs = "(:),[:],{:}"
+"let delimitMate_matchpairs = "(:),[:],{:}"
+"au FileType xhtml,html,htm let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " python-mode
 set completeopt=menu " hack to disable doc window
